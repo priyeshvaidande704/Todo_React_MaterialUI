@@ -29,7 +29,6 @@ class Todo extends Component {
   }
 
   onCheck = (event) => {
-    console.log(this.props.id);
     this.props.handleCheck(this.props.id);
   }
 

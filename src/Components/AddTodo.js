@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, { Component,PureComponent } from "react";
 import PropTypes from "prop-types";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import Paper from "material-ui/Paper";
 import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
 
-class AddTodo extends Component {
+class AddTodo extends PureComponent {
   static propTypes = {
     handleClick: PropTypes.func
   };

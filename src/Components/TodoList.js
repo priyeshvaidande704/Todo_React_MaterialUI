@@ -23,7 +23,7 @@ class TodoList extends Component {
         key={ todo.id } 
         todo={ todo.title } 
         id = {todo.id}
-        checked = { todo.checked }
+        checked = { todo.completed }
         handleRemove={handleRemove}
         handleCheck={handleCheck}
       />

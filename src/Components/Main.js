@@ -18,13 +18,12 @@ class Main extends Component {
   };
 
   handleClick = todo => {
-    console.log(this.state);
     this.setState({
       todos: [
       {
           id: uuid(),
           title: todo,
-          checked: false
+          completed: false
         },
         ...this.state.todos
       ]
@@ -44,7 +43,7 @@ class Main extends Component {
   handleCheck = id => {
     const finalTodos = this.state.todos.map(todo => {
       if (todo.id === id) {
-        todo.checked = !todo.checked;
+        todo.completed = !todo.completed;
       }
       return todo;
     });
@@ -56,8 +55,7 @@ class Main extends Component {
   async componentDidMount(){
     const response = await fetch('https://jsonplaceholder.typicode.com/todos');
     const data = await response.json();
-    console.log("Result",data);
-    this.setState({todos:data.slice(35)});
+    this.setState({todos:data});
   }
 
   render() {
