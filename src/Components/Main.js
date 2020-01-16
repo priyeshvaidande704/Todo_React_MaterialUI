@@ -1,7 +1,4 @@
 import React, { Component } from "react";
-import injectTapEventPlugin from "react-tap-event-plugin";
-import IconButton from "material-ui/IconButton";
-import ListIcon from "material-ui/svg-icons/action/list";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import Paper from "material-ui/Paper";
 import uuid from "uuid";
@@ -11,7 +8,6 @@ import AddTodo from "./AddTodo";
 import TodoList from "./TodoList";
 
 class Main extends Component {
-  
   state = {
     todos: [],
     open: false
@@ -20,7 +16,7 @@ class Main extends Component {
   handleClick = todo => {
     this.setState({
       todos: [
-      {
+        {
           id: uuid(),
           title: todo,
           completed: false
@@ -32,7 +28,7 @@ class Main extends Component {
 
   handleRemove = id => {
     const finalTodos = this.state.todos.filter(todo => {
-      if (todo.id != id) return todo;
+      return todo.id !== id;
     });
     this.setState({
       todos: finalTodos,
@@ -52,10 +48,10 @@ class Main extends Component {
     });
   };
 
-  async componentDidMount(){
-    const response = await fetch('https://jsonplaceholder.typicode.com/todos');
+  async componentDidMount() {
+    const response = await fetch("https://jsonplaceholder.typicode.com/todos");
     const data = await response.json();
-    this.setState({todos:data});
+    this.setState({ todos: data });
   }
 
   render() {

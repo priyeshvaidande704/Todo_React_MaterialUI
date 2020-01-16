@@ -1,4 +1,4 @@
-import React, { Component,PureComponent } from "react";
+import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import Paper from "material-ui/Paper";
@@ -11,23 +11,23 @@ class AddTodo extends PureComponent {
   };
 
   state = {
-  	 inputValue: ""
-  }
+    inputValue: ""
+  };
 
-  onClick = (event) =>{
+  onClick = event => {
     event.preventDefault();
     var todo = this.state.inputValue;
-    if (todo == "") return;
+    if (todo === "") return;
     else {
       var form = document.getElementById("myForm");
       form.reset();
       this.props.handleClick(todo);
-      this.state.inputValue = "";
+      this.setState({ inputValue: "" });
     }
-  }
+  };
 
   render() {
-    const { handleClick } = this.props;
+    //const { handleClick } = this.props;
     console.count("Add Todo");
     return (
       <MuiThemeProvider>
@@ -40,7 +40,7 @@ class AddTodo extends PureComponent {
                   className="AddText"
                   fullWidth={true}
                   onChange={e => this.setState({ inputValue: e.target.value })}
-                ></TextField>
+                />
               </div>
             </Paper>
             <br />
